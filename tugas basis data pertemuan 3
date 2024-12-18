@@ -1,0 +1,339 @@
+SELECT CustomerName, 
+
+ContactName, Address 
+
+FROM Customers 
+
+WHERE Address IS NULL;
+
+
+
+SELECT MIN(Price) AS 
+
+SmallestPrice 
+
+FROM Products;
+
+
+
+SELECT MIN(Price) 
+
+AS SmallestPrice 
+
+FROM Products;
+
+
+
+SELECT City FROM Customers 
+
+UNION 
+
+SELECT City FROM Suppliers 
+
+ORDER BY City;
+
+
+
+SELECT ProductName 
+
+FROM Products 
+
+WHERE ProductID = ANY 
+
+(SELECT ProductID 
+
+FROM OrderDetails 
+
+WHERE Quantity = 10);
+
+
+
+SELECT ALL ProductName 
+
+FROM Products 
+
+WHERE TRUE;
+
+
+
+SELECT * FROM Products 
+
+WHERE Price > SOME (SELECT 
+
+Price FROM Products WHERE Price 
+
+> 20);
+
+
+
+SELECT FROM Products 
+
+WHERE EXISTS (SELECT Price 
+
+FROM Products WHERE Price > 
+
+50);
+
+
+
+SELECT *, rowid 
+
+FROM Employee 
+
+WHERE rowid = 2;
+
+
+
+SELECT FROM Products 
+
+ORDER BY Price ASC;
+
+
+
+SELECT * FROM Products 
+
+ORDER BY ProductName DESC;
+
+
+
+SELECT FROM Customers 
+
+ORDER BY Country ASC, 
+
+CustomerName DESC;
+
+
+
+SELECT id_pesanan, 
+
+tanggal_pesan 
+
+FROM pesanan 
+
+LIMIT 10;
+
+
+
+SELECT kota, COUNT(*) AS 
+
+jumlah_pelanggan 
+
+FROM pelanggan 
+
+GROUP BY kota;
+
+
+
+SELECT CustomerName, City, 
+
+Country FROM Customers;
+
+
+
+SELECT CustomerName AS 
+
+Customer, ContactName AS 
+
+"Contact Person" 
+
+FROM Customers;
+
+
+
+SELECT CustomerID AS ID, 
+
+CustomerName AS Customer 
+
+FROM Customers;
+
+
+
+SELECT Orders. OrderID, 
+
+Customers.CustomerName, 
+
+Orders, OrderDate 
+
+FROM Orders 
+
+INNER JOIN Customers ON 
+
+Orders.CustomerID=Customers.CustomerID;
+
+
+
+SELECT O.OrderID, 
+
+C.CustomerName, O.OrderDate 
+
+FROM Orders O 
+
+INNER JOIN Customers.C 
+
+ON O.CustomerID=C.CustomerID;
+
+
+
+SELECT A. CustomerName AS 
+
+CustomerName1, 
+
+B.CustomerName AS 
+
+CustomerName2, A City
+
+FROM Customers A, Customers B 
+
+WHERE A.CustomerID <> 
+
+B.CustomerID 
+
+AND A.City = B.City 
+
+ORDER BY A.City;
+
+
+
+SELECT 1 AS table1 
+
+UNION 
+
+SELECT 2 AS table1
+
+
+
+SELECT COUNT(DISTINCT 
+
+Country) FROM Customers;
+
+
+
+SELECT OrderID, Quantity, 
+
+CASE 
+
+WHEN Quantity > 30 THEN 'The 
+
+quantity is greater than 30' 
+
+WHEN Quantity = 30 THEN 'The 
+
+quantity is 30' 
+
+ELSE 'The quantity is under 30' 
+
+END AS Quantity Text 
+
+FROM OrderDetails;
+
+
+
+INSERT INTO Customers 
+
+(CustomerName, City, Country) 
+
+SELECT SupplierName, City, 
+
+Country FROM Suppliers;\
+
+
+
+INSERT INTO Customers 
+
+(CustomerName, City, Country) 
+
+VALUES ('Cardinal', 'Stavanger', 
+
+'Norway');
+
+
+
+UPDATE Customers 
+
+SET ContactName = 'Alfred 
+
+Schmidt', City= 'Frankfurt' 
+
+WHERE CustomerID = 1;
+
+
+
+UPDATE Customers 
+
+SET ContactName='Juan' 
+
+WHERE Country='Mexico';
+
+
+
+DELETE FROM Customers WHERE 
+
+CustomerName='Alfreds Futterkiste';
+
+
+
+SELECT TOP 50 PERCENT * FROM 
+
+Customers;
+
+
+
+SELECT TOP 3* FROM Customers. 
+
+WHERE Country='Germany';
+
+
+
+SELECT TOP 3* FROM Customers. 
+
+ORDER BY CustomerName DESC;
+
+SELECT * FROM customers
+
+WHERE country = 'mexico';
+
+
+
+SELECT * FROM customers
+
+WHERE city IN ('Paris','London');
+
+
+
+SELECT * FROM products
+
+WHERE price >= 30;
+
+
+
+SELECT * FROM products
+
+WHERE price BETWEEN 50 AND 60;
+
+
+
+SELECT * FROM customers
+
+WHERE city LIKE 's%';
+
+
+
+SELECT * FROM customers
+
+WHERE country = 'Germany' AND
+
+city = 'Berlin';
+
+
+
+SELECT * FROM customers
+
+WHERE country = 'Germany' AND
+
+country = 'Spain';
+
+
+
+SELECT * FROM customers
+
+WHERE NOT country = 'Germany';
