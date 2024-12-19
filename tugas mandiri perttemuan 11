@@ -1,0 +1,39 @@
+create database pegawai_resto;
+
+use pegawai_resto;
+
+CREATE TABLE Pegawai (
+
+    KodePegawai INT PRIMARY KEY,
+
+    NamaPegawai VARCHAR(100),
+
+    KodeDept INT,
+
+    NamaDept VARCHAR(100),
+
+    KodePemimpin INT,
+
+    FOREIGN KEY (KodePemimpin) REFERENCES Pegawai(KodePegawai)
+
+);
+
+
+
+INSERT INTO Pegawai (KodePegawai, NamaPegawai, KodeDept, NamaDept, KodePemimpin)
+
+VALUES
+
+(1, 'Andi', 101, 'HR', NULL),       
+
+(2, 'Budi', 102, 'IT', 1),          
+
+(3, 'Citra', 103, 'Finance', 1),    
+
+(4, 'Diana', 102, 'IT', 2),         
+
+(5, 'Eko', 103, 'Finance', 3);      
+
+
+
+select * from Pegawai;
