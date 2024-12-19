@@ -1,0 +1,32 @@
+CREATE TABLE mahasiswa_01(
+    nim char(5),
+    nama varchar(10),
+    prodi varchar(10)
+);
+
+-- Mengubah tabel 'mhs' sesuai dengan yang didefinisikan
+ALTER TABLE mahasiswa_01
+ADD PRIMARY KEY (nim);
+
+-- Menambahkan data ke dalam tabel 'mhs'
+INSERT INTO mahasiswa_01 VALUES('001', 'A', 'INF');
+INSERT INTO mahasiswa_01 VALUES('002', 'B', 'SIF');
+INSERT INTO mahasiswa_01 VALUES('003', 'C', 'INF');
+INSERT INTO mahasiswa_01 VALUES('004', 'D', 'TSP');
+INSERT INTO mahasiswa_01 VALUES('005', 'E', 'ARS');
+INSERT INTO mahasiswa_01 VALUES('006', 'F', 'INF');
+INSERT INTO mahasiswa_01 VALUES('007', 'G', 'SIF');
+INSERT INTO mahasiswa_01 VALUES('008', 'H', 'SIF');
+INSERT INTO mahasiswa_01 VALUES('009', 'I', 'SIF');
+INSERT INTO mahasiswa_01 VALUES('010', 'J', 'INF');
+
+-- Query untuk menghitung jumlah mahasiswa di prodi 'INF'
+SELECT prodi, COUNT(*) AS jml_mhs
+FROM mahasiswa_01
+WHERE prodi = 'INF';
+
+-- Query untuk menghitung jumlah mahasiswa per prodi dengan minimal 3 mahasiswa
+SELECT prodi, COUNT(*) AS jumlah
+FROM mahasiswa_01
+GROUP BY prodi
+HAVING COUNT(*) >= 3;
